@@ -1,0 +1,126 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww17860\viewh16700\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\f0\fs26 \cf0 Comparison of LGMD compartmental model parameters between Simon Peron's (2009) version\
+and Pete Jone's (2012) version.  They are, in most cases, either noted as 'same' or 'changed', with \
+the value listed corresponding to the one in the PWJ (5/2011) version of the model.
+\fs24 \
+\
+
+\b Structural - 
+\b0 \
+changed SIZ narrowing: from 1\'b5m to 2\'b5m\
+\
+
+\b Channel Distribution -\
+
+\b0 Compartments 465, 466 on axonal side of SIZ narrowing changed from 'axonal' to 'size'\
+Compartment 474-476 on dendritic side of SIZ narrowing changed from 'siz' to 'dendritic'	Done in order to prevent the cell from having bursty firing rate dynamics and very short first ISIs to current injection\
+\
+Ri - same, 60\
+
+\b Rm - changed, from 4500 to 10350
+\b0 \
+
+\b \
+Channel densities\
+
+\b0 All HH channel densities changed.  Simon had HH channel density uniform across SIZ and axon.\
+
+\b SIZ - gNa: 0.217, gK: 0.3532		
+\b0 :primary determinate of the f-I relation, so altered to get it right. simon values: gna=.27 gk=.108
+\b \
+Axonal - gNa: 0.217 / 4, gK: 0.3532 / 4	: 
+\b0 decreased to avoid bursty spike patterns or a few short ISIs with large current injections
+\b \
+\
+
+\b0 Calcium channels and KCa still only in SIZ compartments
+\b \
+
+\b0 gCaL: same, 0.005
+\b \
+gKCa:  changed,  0.2		
+\b0 :changed to get the amount of SFA matching data,  was .25
+\b \
+
+\b0 \
+
+\b Channel Properties - \
+
+\b0 All HH parameters the same except: \
+Shifted the activation and inactivation of the Na channel more negative by 2 mV.	: This shifts the spike threshold slightly hyperpolarized from where it was.\
+\
+All of the Ca and CaL parameters are the same\
+alphaCa = 0.006  mM * cm2 / ms / mA\
+tauCa = 132 \
+kD = .030  mM\
+
+\b \
+Spontaneous Activity - way different, there was very little spontaneous activity in Simon's model.\
+
+\b0 Excitation
+\b , changed:\
+spont_exc.freq =  .4/1000; \
+spont_exc.gmax = .012; 
+\b0                          \
+spont_exc.erev = 0;\
+spont_exc.tau_syn = 0.3; \
+
+\b spont_exc.nsyns = 5000
+\b0 ; \
+spont_exc.cmpt = 1:400;\
+\
+Inhibition
+\b , changed: 
+\b0 \
+
+\b spont_inh.freq = 3.344/1000; \
+spont_inh.gmax = .0054;
+\b0 \
+spont_inh.erev = -75;\
+spont_inh.tau_syn = 3;\
+
+\b spont_inh.nsyns = 600;  was 200
+\b0 \
+spont_inh.cmpt = 476:480;\
+\
+\
+
+\b Visually driven inputs -
+\b0 \
+Excitation, 
+\b changed
+\b0 :\
+
+\b vis_exc.gmax = .54;				:old .04
+\b0 \
+vis_exc.erev = 0; \
+vis_exc.tau_syn = 0.3; \
+
+\b vis_exc.nspf = 6; 					:old 20\
+vis_exc.gstd = vis_exc.gmax/4;		:simon had no variability in gmax\
+vis_exc.tjitter = 8; 					:simon jittered everything 5ms, uniform\
+
+\b0 vis_exc.cmpt = 1:400\
+\
+
+\b vis_inh.gmax = .0075;				: old .1\
+vis_inh.erev = -75;					:old -70mV\
+
+\b0 vis_inh.tau_syn = 3;\
+
+\b vis_inh.nspf = 4;					:old 3
+\b0 \
+
+\b vis_inh.gstd = vis_inh.gmax/20; 		: was no variability in strength\
+vis_inh.tjitter = 10;					:old 5\
+vis_inh.delay = 70;					:old 50
+\b0 \
+vis_inh.cmpt = 476:480;\
+\
+\
+}
